@@ -10,6 +10,8 @@ namespace Mission2
     {
         static void Main(string[] args)
         {
+
+            //write all of the intro lines and get the number of rolls the player would like thrown
             Console.WriteLine("Welcome to the dice throwing simulator!");
             Console.Write("\nHow many dice rolls would you like to simulate? ");
             int.TryParse(Console.ReadLine(), out int numRolls);
@@ -22,6 +24,7 @@ namespace Mission2
 
             Random rnd = new Random();
 
+            //for however many rolls requested randomly generate two dice with values between 1-6
             for (int i = 0; i < numRolls; i++)
             {
                 int diceOne = rnd.Next(1,7);
