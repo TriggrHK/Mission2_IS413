@@ -10,20 +10,19 @@ namespace Mission2
     {
         static void Main(string[] args)
         {
+            //only store values for 2-12
+            int[] rollCount = new int[11];
+            Random rnd = new Random();
 
             //write all of the intro lines and get the number of rolls the player would like thrown
             Console.WriteLine("Welcome to the dice throwing simulator!");
             Console.Write("\nHow many dice rolls would you like to simulate? ");
+
             int.TryParse(Console.ReadLine(), out int numRolls);
 
             Console.WriteLine("\nDICE ROLLING SIMULATION RESULTS");
             Console.WriteLine("Each \"*\" represents 1% of the total number of rolls");
             Console.WriteLine("Total number of rolls = " + numRolls + ".\n");
-
-            //only store values for 2-12
-            int[] rollCount = new int[11];
-
-            Random rnd = new Random();
 
             //for however many rolls requested randomly generate two dice with values between 1-6
             for (int i = 0; i < numRolls; i++)
