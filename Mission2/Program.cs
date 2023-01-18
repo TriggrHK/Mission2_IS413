@@ -20,7 +20,8 @@ namespace Mission2
             Console.WriteLine("Each \"*\" represents 1% of the total number of rolls");
             Console.WriteLine("Total number of rolls = " + numRolls + ".\n");
 
-            int[] rollCount = new int[13];
+            //only store values for 2-12
+            int[] rollCount = new int[11];
 
             Random rnd = new Random();
 
@@ -30,16 +31,17 @@ namespace Mission2
                 int diceOne = rnd.Next(1,7);
                 int diceTwo = rnd.Next(1,7);
 
-                rollCount[diceOne + diceTwo]++;
+                rollCount[diceOne + diceTwo - 2]++;
             }
 
             //skip 0 and 1 because they won't ever be rolled
-            for (int i = 2; i < rollCount.Count(); i++)
+            for (int i = 0; i < rollCount.Count(); i++)
             {
                 //divide the number of times each combo was rolled by one-percent of the total number of rolls
                 int numStars = Convert.ToInt32(Math.Floor(rollCount[i] / (numRolls * 0.01)));
                 string stars = new string('*', numStars);
-                Console.WriteLine(i + ": " + stars);
+                //account for the array storing values from 2-12
+                Console.WriteLine((i+2) + ": " + stars);
             }
 
             Console.WriteLine("\nThank you for using the dice throwing simulator. Goodbye!");
