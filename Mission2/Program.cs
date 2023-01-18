@@ -25,12 +25,13 @@ namespace Mission2
             Console.WriteLine("Total number of rolls = " + numRolls + ".\n");
 
             //for however many rolls requested randomly generate two dice with values between 1-6
+            //it randomly generate values 0-5 but that matches with how the values are stored in the array
             for (int i = 0; i < numRolls; i++)
             {
-                int diceOne = rnd.Next(1,7);
-                int diceTwo = rnd.Next(1,7);
+                int diceOne = rnd.Next(6);
+                int diceTwo = rnd.Next(6);
 
-                rollCount[diceOne + diceTwo - 2]++;
+                rollCount[diceOne + diceTwo]++;
             }
 
             //skip 0 and 1 because they won't ever be rolled
@@ -39,8 +40,9 @@ namespace Mission2
                 //divide the number of times each combo was rolled by one-percent of the total number of rolls
                 int numStars = Convert.ToInt32(Math.Floor(rollCount[i] / (numRolls * 0.01)));
                 string stars = new string('*', numStars);
+
                 //account for the array storing values from 2-12
-                Console.WriteLine((i+2) + ": " + stars);
+                Console.WriteLine((i + 2) + ": " + stars);
             }
 
             Console.WriteLine("\nThank you for using the dice throwing simulator. Goodbye!");
